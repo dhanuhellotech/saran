@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
+const contactRoutes = require('./Router/contactRoutes');
+const vehicleRouter = require('./Router/vehicleRouter');
 const tourFormRoutes = require('./Router/tourFormRoutes'); // Adjusted import path
 require('dotenv').config();
 
@@ -20,7 +22,8 @@ app.use((err, req, res, next) => {
 
 // Routes
 app.use('/tourform', tourFormRoutes);
-
+app.use('/vecform', vehicleRouter);
+app.use('/contacts', contactRoutes);
 // Connect to MongoDB
 mongoose.connect("mongodb+srv://dhanalakshmihellotech:SIsXafSMfzzbw46A@saran.9hvu8ly.mongodb.net/saran", {
   useNewUrlParser: true,
